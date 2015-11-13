@@ -1,0 +1,32 @@
+var Handlebars = require('handlebars/runtime').create();
+
+/**
+* Renders specified template with provided model data.
+*
+* @param {String} templateName name of template to render
+* @param {Object=} model data model to hydrate template with
+*
+* @returns {String}
+*/
+module.exports = function renderTemplate(templateName, model) {
+  var fn = Handlebars.partials[templateName];
+
+  if (!fn) {
+    throw new ReferenceError('invalid template: "' + templateName + '"');
+  }
+
+  return fn(model || {});
+};
+
+
+/** @type {Handlebars} */
+module.exports.handlebars = Handlebars;
+
+Handlebars.templates = Handlebars.templates || {};
+
+
+{{#each templateFns}}
+// {{{this.name}}}
+Handlebars.templates['{{{this.name}}}'] = Handlebars.partials['{{{this.name}}}'] = {{{this.fn}}}
+
+{{/each}}
