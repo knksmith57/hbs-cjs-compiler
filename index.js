@@ -1,17 +1,18 @@
 'use strict';
 
-const async       = require('async');
-const debug       = require('debug')('hbs-cjs-precompiler');
-const fs          = require('fs');
-const glob        = require('glob');
-const handlebars  = require('handlebars');
-const minify      = require('uglify-js').minify;
-const path        = require('path');
-const procs       = require('os').cpus().length;
-const spawn       = require('child_process').spawn;
-const sprintf     = require('util').format;
-const strToModule = require('require-from-string');
+const async        = require('async');
+const debug        = require('debug')('hbs-cjs-precompiler');
+const fs           = require('fs');
+const glob         = require('glob');
+const handlebars   = require('handlebars');
+const minify       = require('uglify-js').minify;
+const path         = require('path');
+const procs        = require('os').cpus().length;
+const spawn        = require('child_process').spawn;
+const sprintf      = require('util').format;
+const strToModule  = require('require-from-string');
 
+const spawnCommand = path.resolve(__dirname, 'node_modules/.bin/handlebars');
 
 /** @type {asScript} */
 module.exports.asScript = asScript;
@@ -119,7 +120,7 @@ function asScript(templateDir, options) {
       handlebarsArgs.push('--known', helper);
     });
 
-    worker = spawn('handlebars', handlebarsArgs.concat(partial));
+    worker = spawn(spawnCommand, handlebarsArgs.concat(partial));
 
     workers[worker.pid] = worker;
 
