@@ -1,6 +1,6 @@
 {
   "name": "hbs-cjs-compiler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Super fast handlebars compiler for building node.js-friendly CommonJS modules",
   "license": "MIT",
   "keywords": [
