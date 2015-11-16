@@ -47,7 +47,7 @@ templateDir = templateDir[0];
 
 require('..').asScript(templateDir, {helpers: helpers, namespace: namespace})
   .catch((err) => {
-    console.log(err);
+    console.error(err);
     process.exit(1);
   })
   .then((script) => {
