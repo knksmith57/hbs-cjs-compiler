@@ -8,11 +8,12 @@ const handlebars   = require('handlebars');
 const minify       = require('uglify-js').minify;
 const path         = require('path');
 const procs        = require('os').cpus().length;
+const resolveBin   = require('resolve-bin');
 const spawn        = require('child_process').spawn;
 const sprintf      = require('util').format;
 const strToModule  = require('require-from-string');
 
-const spawnCommand = path.resolve(__dirname, 'node_modules/.bin/handlebars');
+const spawnCommand = resolveBin.sync('handlebars');
 
 /** @type {asScript} */
 module.exports.asScript = asScript;
