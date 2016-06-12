@@ -21,7 +21,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js bin",
+    "lint": "standard",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -48,6 +48,6 @@
     "yargs": "^3.30.0"
   },
   "devDependencies": {
-    "eslint": "^1.9.0"
+    "standard": "^7.1.2"
   }
 }
