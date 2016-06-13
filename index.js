@@ -1,7 +1,7 @@
 'use strict'
 
 const async = require('async')
-const debug = require('debug')('hbs-cjs-precompiler')
+const debug = require('debug')('hbs-cjs-compiler')
 const fs = require('fs')
 const glob = require('glob')
 const handlebars = require('handlebars')
